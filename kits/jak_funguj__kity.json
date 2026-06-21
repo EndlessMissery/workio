@@ -1,0 +1,28 @@
+{
+  "id": "tutorial-kit-v1",
+  "name": "Jak fungují Kity",
+  "description": "Uvítací průvodce — projdi soubory a pochop, jak Kity fungují.",
+  "framework": "react",
+  "files": [
+    {
+      "id": "tut-f1",
+      "name": "README.md",
+      "language": "markdown",
+      "content": "# Co jsou Kity?\n\n**Kit** = skupina souborů, které spolu tvoří jeden celek — komponenta, stránka, API modul.\n\n---\n\n## Jak Kit vypadá\n\nKlikni na záložky souborů nahoře:\n\n| Soubor | Co obsahuje |\n|---|---|\n| `README.md` | Právě čteš 😊 — dokumentace kitu |\n| `StatusBadge.jsx` | React komponenta s props |\n| `StatusBadge.module.css` | CSS styly pro tu komponentu |\n\n---\n\n## Jak s Kity pracovat\n\n### 1. Soubory\n- **Přidat soubor** → klikni **+** vpravo od záložek\n- **Přejmenovat** → poklikej na název záložky\n- **Smazat soubor** → najeď na záložku, klikni ×\n- **Jazyk souboru** → vyber v liště pod záložkami\n\n### 2. Uložit kit\nKlikni **Uložit** nahoře vpravo — nebo prostě edituj, tečka vedle počtu souborů ukáže, že máš neuložené změny.\n\n### 3. Export do VSCode\n\n#### Přímo do složky (Chrome / Edge / Safari 17+)\n1. Klikni **Exportovat do složky**\n2. Vyber složku svého projektu (nebo libovolnou)\n3. Soubory se zapíšou do podsložky s názvem kitu\n4. Otevři složku ve VSCode → `code .`\n\n#### Download ZIP\n- Klikni **Stáhnout ZIP** → rozbal do projektu\n- Funguje ve všech prohlížečích\n\n---\n\n## Předdefinované šablony\n\nKlikni na ikonu **⊞** nahoře v levém panelu — uvidíš připravené kity:\n\n- **React Auth Form** — login formulář s validací\n- **React Data Table** — tabulka se sortováním a stránkováním\n- **React Modal** — přístupný dialog s focus trapem\n- **React CRUD Page** — full CRUD s optimistic updates\n- **Express REST API** — Express server s JWT a error handlerem\n\nKliknutím na šablonu vytvoříš svůj kit s předvyplněnými soubory.\n\n---\n\n*Tento kit můžeš smazat — klikni na ikonu koše nahoře vpravo.*"
+    },
+    {
+      "id": "tut-f2",
+      "name": "StatusBadge.jsx",
+      "language": "jsx",
+      "content": "// Ukázková React komponenta — součást kitu\n// Každý kit může mít libovolný počet souborů\n\nimport styles from './StatusBadge.module.css';\n\n// Komponenta přijímá prop \"status\" a zobrazí barevný badge\nexport function StatusBadge({ status = 'idle', label }) {\n  // Každý stav má jiné CSS\n  const variants = {\n    idle:    { text: label || 'Čeká',     cls: styles.idle },\n    loading: { text: label || 'Načítám',  cls: styles.loading },\n    success: { text: label || 'Hotovo',   cls: styles.success },\n    error:   { text: label || 'Chyba',    cls: styles.error },\n  };\n\n  const variant = variants[status] ?? variants.idle;\n\n  return (\n    <span className={`${styles.badge} ${variant.cls}`}>\n      {/* Tečka — barva se mění podle stavu */}\n      <span className={styles.dot} />\n      {variant.text}\n    </span>\n  );\n}\n\n// Ukázka použití:\n//\n// <StatusBadge status=\"loading\" />\n// <StatusBadge status=\"success\" label=\"Uloženo\" />\n// <StatusBadge status=\"error\"   label=\"Selhalo\" />"
+    },
+    {
+      "id": "tut-f3",
+      "name": "StatusBadge.module.css",
+      "language": "css",
+      "content": "/* CSS Modules — třídy jsou automaticky unikátní, takže .badge nezasáhne zbytek app */\n\n.badge {\n  display: inline-flex;\n  align-items: center;\n  gap: 6px;\n  padding: 3px 10px;\n  border-radius: 99px;   /* pill tvar */\n  font-size: 12px;\n  font-weight: 600;\n  border: 1px solid currentColor;\n  white-space: nowrap;\n}\n\n/* Malá tečka vlevo */\n.dot {\n  width: 6px;\n  height: 6px;\n  border-radius: 50%;\n  background: currentColor;\n  flex-shrink: 0;\n}\n\n/* ── Varianty stavu ── */\n\n.idle {\n  color: #6b7280;\n  background: #f3f4f6;\n  border-color: #e5e7eb;\n}\n\n.loading {\n  color: #2563eb;\n  background: #eff6ff;\n  border-color: #bfdbfe;\n  /* Pulzující animace */\n  animation: pulse 1.5s ease-in-out infinite;\n}\n\n.success {\n  color: #16a34a;\n  background: #f0fdf4;\n  border-color: #bbf7d0;\n}\n\n.error {\n  color: #dc2626;\n  background: #fef2f2;\n  border-color: #fecaca;\n}\n\n@keyframes pulse {\n  0%, 100% { opacity: 1; }\n  50%       { opacity: 0.6; }\n}"
+    }
+  ],
+  "createdAt": 1781982921258,
+  "updatedAt": 1781982921258
+}
